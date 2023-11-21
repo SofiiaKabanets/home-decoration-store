@@ -15,8 +15,6 @@ class SignUpView(CreateView):
             form.save()
             username = form.cleaned_data.get('username')
             signup_user = CustomUser.objects.get(username=username)
-            customer_group = Group.objects.get(name='Customer')
-            customer_group.user_set.add(signup_user)
             return redirect('login')
         else:
             return render(request, self.template_name, {'form' : form })

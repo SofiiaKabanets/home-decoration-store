@@ -2,13 +2,12 @@ from .models import Category, Product
 from django.contrib import admin
 
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ['name']
+    list_display = ['name','description']
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ['name', 'price', 'description', 'category', 'stock', 
-    'available', 'created', 'updated']
-    list_editable = ['price', 'stock', 'available']
-    list_per_page = 15
+    list_display = ['name', 'price', 'description', 'category',]
+    list_editable = ['price',]
+    list_per_page = 10
 
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Product, ProductAdmin)

@@ -17,17 +17,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Your Cart</a>
                 </li>
-                {% if item_count > 0 %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'cart:cart_detail' %}"><i
-                            class="fas fa-shopping-cart">({{item_count}})</i></a>
-                </li>
-                {% endif %}
             </ul>
-            <form class="d-flex" action="{% url 'search_app:searchResult' %}" method="get">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="q">
-                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-            </form>
         </div>
     </div>
 </nav>

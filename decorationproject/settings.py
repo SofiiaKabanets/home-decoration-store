@@ -40,9 +40,6 @@ INSTALLED_APPS = [
     # local
     'accounts',
     'shop',
-    'search_app',
-    'cart',    
-    'order',
     # 3rd party
     'crispy_forms',
     'crispy_bootstrap5',
@@ -72,9 +69,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                # new
-                'shop.context_processors.menu_links',
-                'cart.context_processors.counter',
             ],
         },
     },
@@ -142,6 +136,9 @@ STATICFILES_FINDERS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = 'login'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = str(BASE_DIR.joinpath('media'))
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
