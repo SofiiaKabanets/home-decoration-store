@@ -6,3 +6,4 @@ from django.contrib.auth.models import AbstractUser
 class CustomUser(AbstractUser):
     dob = models.DateField(null=True, blank=True,verbose_name = 'Date of Birth')
     phone = models.CharField(max_length=10, blank=True, null=True, verbose_name='Phone Number')
+    signup_date = models.DateTimeField(auto_now_add=True, blank = True, null= True)

@@ -6,6 +6,9 @@
                 Welcome, <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" 
                 aria-haspopup="true" aria-expanded="false">{{ user.username }} 
                 <i class="fas fa-user-circle"></i></a>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a href="#" class="dropdown-item">Profile</a>
+                </div>
             </li>
             <li>
                 <a href="{% url 'logout' %}">Sign Out <i class="fas fa-sign-out-alt"></i></a>

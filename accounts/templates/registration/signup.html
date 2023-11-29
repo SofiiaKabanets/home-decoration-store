@@ -9,6 +9,7 @@ Create a New Account - Home Decoration Store
 {% endblock %}
 {% block content %}
 <div>
+    {% if not user.is_authenticated %}
     {% if not form.is_valid %}
     <div class="mx-auto">
         <br />
@@ -25,6 +26,18 @@ Create a New Account - Home Decoration Store
                 </button>
             </form>
             <br />
+        </div>
+    </div>
+    {% endif %}
+    {% else %}
+    <div class="mx-auto p-3">
+        <br />
+        <h1 class="my_title text-center">Already logged in</h1>
+        <br />
+        <div class="col-9 col-sm-9 col-md-6 col-lg-5 mx-auto bg-light text-center">
+            <p>You are already logged in as <a href="#">{{user.username}}</a></p>
+            <a href="{% url 'logout' %}">Sign out <i class="fas fa-sign-out-alt"></i></a> <br> <a href="{% url 'password_change' %}">Change password</a>
+
         </div>
     </div>
     {% endif %}
