@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block metadescription %}
+View your profile.
+{% endblock %}
+{% block title %}
+Profile Page - Home Decoration Store
+{% endblock %}
+{% block content %}
+<div>
+    <div class="mx-auto">
+        <br />
+        {% if request.user.is_authenticated %}
+        <div class="container info-box">
+            <h1 class="my_title text-center">Viewing {{ profile.user.username }}'s Profile</h1>
+            <br />
+            <div class="col-9 col-sm-9 col-md-6 col-lg-5 mx-auto info-box p-4">
+                <h2 class="text-center">Profile Information</h2>
+                <p>Username: {{ profile.user.username }}</p>
+                <p>Email: {{ profile.user.email }}</p>
+                <p>Date of Birth: {{ profile.user.dob }}</p>
+                <p>Member since: {{ profile.user.signup_date }}</p>
+                
+                {% if request.user == profile.user %}
+                    <h2 class="text-center mt-4">Settings</h2>
+                    <a href="{% url 'profile_edit' user.profile.pk %}" class="dropdown-item">Edit profile</a>
+                {% endif %}
+            </div>
+        </div>
+    
+
+        {% else %}
+            <h1 class="my_title text-center">An account is needed to view this page.</h1>
+            <br />
+            <div class="col-9 col-sm-9 col-md-6 col-lg-5 mx-auto info-box">
+                <a href="{% url 'signup' %}">Sign Up <i class="fas fa-user-plus"></i></a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+<br />
+{% endblock %}

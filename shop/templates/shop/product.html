@@ -12,12 +12,12 @@
         <p><a href="{% url 'shop:all_products' %}">Home</a> | <a
                 href="{{product.category.get_url }}">{{product.category}}</a> | {{product.name}}</p>
     </div>
-    <div class="container">
+    <div class="container info-box p-3">
         <br>
         <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center">
                 <div style="min-width: 18rem;">
-                    <img src="{{product.image.url}}" alt="{{product.name}}">
+                    <img src="{{product.image.url}}" alt="{{product.name}}" width="500px">
                 </div>
             </div>
             <div class="col-12 col-sm-12 col-md-12 col-lg-6">

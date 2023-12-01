@@ -4,10 +4,10 @@ from django.core.paginator import Paginator, EmptyPage, InvalidPage
 
 def prod_list(request,category_id=None):
     category = None
-    products = Product.objects.filter(available=True)
+    products = Product.objects.filter(stock__gt=0)
     if category_id:
         category = get_object_or_404(Category,id=category_id)
-        products = Product.objects.filter(category=category, available=True)
+        products = Product.objects.filter(category=category, stock__gt=0)
     paginator = Paginator(products,6)
     try:
         page = int(request.GET.get('page','1'))

@@ -3,8 +3,8 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from .models import CustomUser
 
 from django.core.exceptions import ValidationError
-from django.utils.translation import gettext_lazy
 from datetime import date
+
 
 class CustomUserCreationForm(UserCreationForm):
     dob = forms.DateField(
@@ -19,12 +19,15 @@ class CustomUserCreationForm(UserCreationForm):
     def clean_dob(self):
         dob = self.cleaned_data['dob']
         today = date.today()
-        age_limit = today.replace(year=today.year - 13)
-
-        if dob and dob > age_limit:
-            raise ValidationError(gettext_lazy('You must be 13 years old or older to register.'))
+        if dob > today:
+            raise ValidationError('Must enter a valid date of birth.',code='invalid')
         
         return dob
+    def clean_phone(self):
+        phone = self.cleaned_data['phone']
+        if not str(phone).isdigit() or len(phone) < 10:
+            raise ValidationError('Must enter a valid phone number.',code='invalid')
+
 
 
 class CustomUserChangeForm(UserChangeForm):

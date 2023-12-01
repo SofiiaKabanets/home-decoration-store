@@ -5,7 +5,6 @@ Search - All Your Home Decoration Needs
 {% endblock %}
 {% block content %}
         {% if products %}
-            <!-- loop through search query if there is a result -->
             {% for product in products %}
             <div class="my_bottom_margin col-9 col-sm-12 col-md-4 col-md-12 col-lg-4">  
                 <div class="card text-center" style="min-width: 18rem;">
@@ -23,8 +22,6 @@ Search - All Your Home Decoration Needs
             <p class="text-center my_search_text">0 results found.</p>
             </div>
             {% endfor %}
-
-            <!-- return a message if there are no results found. -->
         {% else %}
             <h3>No search results found</h3>
         {% endif %}
