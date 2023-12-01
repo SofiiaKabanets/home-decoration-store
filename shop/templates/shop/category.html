@@ -15,29 +15,25 @@ See Our Variety of Options - Home Decoration Store
 {% endif %}
 {% endblock %}
 {% block content %}
+
 {% if category %}
-<div>
-    <div>
-        <p><a href="{% url 'shop:all_products' %}">Our Product Collection</a> | {{category.name}}</p>
-    </div>
-</div>
-{% endif %}
-<div class="mx-auto">
-    {% if category %}
-    <img class="my_image" src="{{category.image.url}}" alt="{{category.name}}">
-</div>
 <br>
 <div>
-    <h1 class="text-center my_title">{{category.name}}</h1>
-    <p class="test-justify">{{category.description}}</p>
+    <h1 class="text-center page-title">{{category.name}}</h1>
+    <div class="mx-auto">
+        <img class="my_image" src="{{category.image.url}}" alt="{{category.name}}">
+    </div>
+    <br>
+    <p class="page-description">{{category.description}}</p>
 </div>
 {% else %}
-<img class="my_image my_image_padding" src="{% static 'images/banner.jpg' %}" alt="Our Products Collection">
 <br>
 <div>
-    <h1 class="text-center my_title">Our Products Collection</h1>
-    <p class="text-justify">Home Haven is here to fit all your home decoration needs. We offer a variety of items for enhancing and styling your living space.</p>
+    <h1 class="text-center page-title">All Products</h1>
+    <p class="page-description">Home Haven is here to fit all your home decoration needs. We offer a variety of items for enhancing and styling your living space.</p>
 </div>
+<img class="my_banner" src="{% static 'images/banner.jpg' %}" alt="Our Products Collection">
+
 {% endif %}
 <div>
     <div class="container">
