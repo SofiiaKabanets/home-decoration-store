@@ -1,23 +1,35 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            ariacontrols="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'shop:all_products' %}">All Products</a>
-                </li>
-                {% for cat in links %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{{cat.get_absolute_url}}">{{cat.name}}</a>
-                </li>
-                {% endfor %}
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Your Cart</a>
-                </li>
-            </ul>
-        </div>
+{% load static %}
+<div class="main-nav">
+    <div class="navbar">
+        <header>
+            <div class="logo">
+                <a href="{% url 'shop:all_products' %}">
+                    <h1>Home Haven</h1>
+                    <h2>Embrace your space.</h2>
+                </a>
+            </div>
+        </header>
+        <ul class="navbar">
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+                Welcome, <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" 
+                aria-haspopup="true" aria-expanded="false">{{ user.username }} 
+                <ion-icon name="enter-outline"></ion-icon>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a href="{% url 'profile_view' user.profile.pk %}" class="dropdown-item">Profile</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="{% url 'logout' %}" class="nav-link">Sign Out <i class="fas fa-sign-out-alt"></i></a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+                <a href="{% url 'signup' %}" class="nav-link">Sign Up <i class="fas fa-user-plus"></i></a>
+            </li>
+            <li class="nav-item">
+                <a href="{% url 'login' %}" class="nav-link">Sign In <i class="fas fa-sign-in-alt"></i></a>
+            </li>
+            {% endif %}
+        </ul>
     </div>
-</nav>
+</div>
