@@ -5,7 +5,11 @@
     font-size: 14px;
     text-transform: uppercase;
 }
-
+.navigation{
+    display: inline-block;
+    vertical-align: middle;
+    width: 200px;
+}
 
 .dropdown-item {
     font-size: 14px;
@@ -161,10 +165,10 @@
 }
 
 
-.my_top_navbar_div {
+/* .my_top_navbar_div {
 	height: 60px;
 	line-height: 50px;
-}
+} */
 .my_custom_menu {
 	text-align: right !important;
 }

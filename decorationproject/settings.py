@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     # local
     'accounts',
     'shop',
+    'cart',
     # 3rd party
     'crispy_forms',
     'crispy_bootstrap5',
