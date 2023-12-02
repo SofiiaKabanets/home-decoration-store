@@ -28,6 +28,10 @@ font-size: 25px;
     background-color: rgb(240,240,240);
 }
 
+.info-box p{
+    font-size: 135%;
+}
+
 /* Logo */
 .logo {
     position: relative; 
@@ -37,7 +41,7 @@ font-size: 25px;
     text-align: center;
     text-decoration: none;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color: #2569fa;
+    color: #225edf;
 }
 
 .logo h2 {
@@ -74,7 +78,7 @@ font-size: 25px;
 .nav-item {
     position: relative; 
     text-decoration: none;
-    margin-left: 10px;
+    margin-left: 30px;
     list-style: none;
 }
 

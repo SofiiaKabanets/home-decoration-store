@@ -14,17 +14,16 @@
     <div class="container d-flex align-items-center justify-content-center">
         <div class="col-12 col-sm-12 col-md-8 col-lg-6 info-box p-3">
             {% if not user.is_authenticated %}
-            <h1 class="md-3 login-title text-center">Login or Create a New Account</h1>
+            <h1 class="md-3 login-title text-center">Login to Home Haven</h1>
 
             <div class="text-center">
-                <h2 class="login-title">Registered Customers Only</h2>
                 <form method="post" class="text-center">
                     {% csrf_token %}
                     <p>{{ form | crispy }}</p>
                     <div class="d-grid gap-2">
                         <button type="submit" class="btn btn-secondary btn-sm">Login</button>
                     </div>
-                    <a href="#" class="btn btn-link">Forgot password?</a>
+                    <a href="{% url 'password_reset' %}" class="btn btn-link">Forgot password?</a>
                 </form>
             </div>
 
@@ -40,7 +39,9 @@
                 <h1 class="login-title text-center">Already logged in</h1>
                 <br />
                 <div class="col-9 col-sm-9 col-md-6 col-lg-5 mx-auto info-box text-center">
-                    <p>You are already logged in as <a href="#">{{user.username}}</a></p>
+                    <p>You are already logged in as <a href="{% url 'profile_view' user.profile.pk %}" class="">{{user.username}}</a></p>
+                    
+
                     <a href="{% url 'logout' %}">Sign out <i class="fas fa-sign-out-alt"></i></a> <br> <a href="{% url 'password_change' %}">Change password</a>
         
                 </div>

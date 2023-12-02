@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-from .models import CustomUser
+from .models import CustomUser,Profile
+from django.contrib.auth import get_user_model
 
 from django.core.exceptions import ValidationError
 from datetime import date
@@ -34,3 +35,19 @@ class CustomUserChangeForm(UserChangeForm):
     class Meta:
         model = CustomUser
         fields = ('username','email','dob','phone')
+
+
+class CustomProfileChangeForm(UserChangeForm):
+    class Meta:
+        model = Profile
+        fields = ('fname','lname','biography','picture')
+        labels = {
+            'fname': 'First Name',
+            'lname': 'Last Name',
+            'biography': 'Biography',
+            'picture': 'Profile Picture',
+        }
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Exclude the password field from the form
+        del self.fields['password']

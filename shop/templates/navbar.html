@@ -10,24 +10,24 @@
             </div>
         </header>
         <ul class="navbar">
-            {% if user.is_authenticated %}
+            {% if user and user.is_authenticated %}
             <li class="nav-item">
                 Welcome, <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" 
                 aria-haspopup="true" aria-expanded="false">{{ user.username }} 
-                <ion-icon name="enter-outline"></ion-icon>
                 <div class="dropdown-menu dropdown-menu-right">
                     <a href="{% url 'profile_view' user.profile.pk %}" class="dropdown-item">Profile</a>
-                </div>
+                </div>                
+
             </li>
             <li class="nav-item">
-                <a href="{% url 'logout' %}" class="nav-link">Sign Out <i class="fas fa-sign-out-alt"></i></a>
+                <a href="{% url 'logout' %}" class="nav-link">Sign Out <ion-icon name="exit-outline"></ion-icon></a>
             </li>
             {% else %}
             <li class="nav-item">
-                <a href="{% url 'signup' %}" class="nav-link">Sign Up <i class="fas fa-user-plus"></i></a>
+                <a href="{% url 'signup' %}" class="nav-link">Sign Up <ion-icon name="person-outline"></ion-icon></a>
             </li>
             <li class="nav-item">
-                <a href="{% url 'login' %}" class="nav-link">Sign In <i class="fas fa-sign-in-alt"></i></a>
+                <a href="{% url 'login' %}" class="nav-link">Sign In <ion-icon name="enter-outline"></ion-icon></a>
             </li>
             {% endif %}
         </ul>

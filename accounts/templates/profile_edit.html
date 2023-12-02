@@ -8,25 +8,24 @@ Edit your profile.
 Edit Profile - Home Decoration Store
 {% endblock %}
 {% block content %}
-{% if request.user == profile.user %}
-<h2 class="text-center mt-4">Edit Your Profile</h2>
-<form method="post">
-    <div class="mb-3">
-        <label for="id_first_name" class="form-label">First Name</label>
-        <input type="text" name="first_name" class="form-control" value="{{ profile.user.first_name }}">
-    </div>
-    <div class="mb-3">
-        <label for="id_last_name" class="form-label">Last Name</label>
-        <input type="text" name="last_name" class="form-control" value="{{ profile.user.last_name }}">
-    </div>
-    <div class="mb-3">
-        <label for="id_dob" class="form-label">Date of Birth</label>
-        <input type="date" name="dob" class="form-control" value="{{ profile.user.dob }}">
-    </div>
+{% if request.user.is_authenticated %}
+    {% if request.user == user.profile.user %}
+        <h2 class="text-center mt-4">Edit Your Profile</h2>
+        <form method="post" enctype="multipart/form-data">
+            {{ form | crispy }}
 
-    {% csrf_token %}
-    <button type="submit" class="btn btn-secondary">
-        Save Changes
-    </button>
-</form>
+            {% csrf_token %}
+            <button type="submit" class="btn btn-secondary">
+                Save Changes
+            </button>
+        </form>
+    {% endif %}
+    {% else %}
+    <h1 class="page-title text-center">An account is needed to view this page.</h1>
+    <br />
+    <div class="col-9 col-sm-9 col-md-6 col-lg-5 mx-auto info-box">
+        <a href="{% url 'signup' %}">Sign Up <i class="fas fa-user-plus"></i></a>
+    </div>
 {% endif %}
+
+{% endblock %}

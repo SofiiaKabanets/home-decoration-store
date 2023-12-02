@@ -17,9 +17,14 @@ class Profile(models.Model):
         null=True,
         on_delete=models.CASCADE,
     )
-
+    fname = models.TextField(max_length=20,blank = True)
+    lname = models.TextField(max_length=20,blank = True)
+    biography = models.TextField(max_length=50,blank = True)
+    picture = models.ImageField(upload_to='profile', blank=True)
     def __str__(self):
         return str(self.user)
     
     def get_absolute_url(self):
         return reverse('profile_view',args=[str(self.id)])
+    
+    
