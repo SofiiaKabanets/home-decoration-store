@@ -47,7 +47,4 @@ class CustomProfileChangeForm(UserChangeForm):
             'biography': 'Biography',
             'picture': 'Profile Picture',
         }
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        # Exclude the password field from the form
-        del self.fields['password']
+

@@ -25,6 +25,8 @@ Profile Page - Home Decoration Store
                     <p>Email: {{ profile.user.email }}</p>
                     <p>Date of Birth: {{ profile.user.dob }}</p>
                     <p>Member since: {{ profile.user.signup_date }}</p>
+                    <p>Biography: {{ profile.biography }}</p>
+                    
                 </div>
                 {% if request.user == profile.user %}
                 <div class="container-fluid info-box">
