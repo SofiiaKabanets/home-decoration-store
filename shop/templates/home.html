@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Home Heaven{% endblock %}
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'path/to/your/css/file.css' %}">
+
+
+<style>
+    .grid-item {
+            width: 100%; 
+            overflow: hidden; 
+            display: flex;
+            justify-content: {% cycle 'flex-end' 'flex-start' %}; 
+        }
+    
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 0px; 
+    }
+    
+    .grid-item img {
+        max-width: 340px; 
+        height: auto; 
+        display: block;
+    }
+    
+    .flex-start {
+        justify-content: flex-start; 
+    }
+    
+    .flex-end {
+        justify-content: flex-end; 
+    }
+    
+    .centered {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    .image_container {
+        position: relative;
+        text-align: center;
+      }
+    
+    .image_container a {
+        color: white;
+        font-size: 22px;
+        text-decoration: none;
+    }
+    .image_container:hover{
+        filter: saturate(.7);
+    }
+    .image_container a:hover{
+        font-size: 25px;
+    }
+    .home_img{
+        width: 100vw; 
+        height: 100vh; 
+        display: block;
+    }
+
+    .home_img_container {
+        position: relative;
+        text-align: center;
+    }
+
+    .home_img_text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white; 
+        font-size: 40px; 
+        font-weight: light; 
+    }
+    .home_img_text:hover {
+        font-size: 45px;
+    }
+
+    .home_img {
+        width: 100vw; 
+        height: 100vh; 
+        object-fit: cover; 
+        display: block;
+    }
+    </style>
+
+    <div class="home_img_container">
+        <a href=" {% url 'shop:all_products' %}">
+        <img src="{% static 'images/home3.jpeg' %}" class="home_img" alt="Interior">
+        <div class="home_img_text">ZEN BALANCE <br><p style="font-size: 13px;">Discover</p></div>
+        </a>
+    </div>
+    
+    <div class="home_img_container">
+        <a href=" {% url 'shop:products_by_category' '1961339e-68f4-4b45-9f3c-fe8ddfdfeb42' %}">
+        <img src="{% static 'images/home2.jpeg' %}" class="home_img" alt="Decor">
+        <div class="home_img_text">NEW SOFA COLLECTION<p style="font-size: 13px;">Discover</p></div>
+        </a>
+    </div>
+    
+    <div class="home_img_container">
+        <a href=" {% url 'shop:products_by_category' '2f8316e0-011f-45f2-aabc-cea90233eed4' %}">
+        <img src="{% static 'images/home1.jpg' %}" class="home_img" alt="Interior">
+        <div class="home_img_text p-4" style="background-color: rgb(0 0 0 / 50%);">WARM WINTER MOMENTS</div>
+        </a>
+    </div>
+<br><br><br><br>
+<h2 class="text-center">About Us</h2>
+<p class="text-center m-4 p-4">We're working hard to become the industry leader in the furniture, design, and decoration industry. We make an effort to go the extra step, and we're the number one option for perfectionists looking for unique products and styles that are always ahead of the curve.
+
+    Our purpose? To make high-quality design products, and deliver them with impeccable service. We're not sending rockets to the moon (just yet), but we are delivering our products in record time, and making significant investments in cutting delivery times.
+    
+    Our obsession? To perfect every detail. That's why for all our products, we carefully and personally follow each step of our design, manufacturing, and distribution process. Doing this assures excellent and functional designs that are high-quality and long-lasting, at an affordable price.</p>
+    <br><br><br>
+
+<div class="wrapper">
+    <div class="main">
+        <div class="grid-container">
+            {% for category in categories %}
+                <div class="grid-item {% cycle 'flex-end' 'flex-start' %}">
+                    <div class="image_container">
+                    <a href="{% url 'shop:products_by_category' category.id %}">
+                    <img src="{{ category.image.url }}" alt="{{ category.name }}">
+                    <div class="centered">{{ category.name }}</div></a>
+                </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<br><br>
+{% endblock %}
