@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     # local
     'accounts',
     'shop',
+    'cart',
+    'search_app',
     # 3rd party
     'crispy_forms',
     'crispy_bootstrap5',
@@ -143,3 +145,5 @@ LOGOUT_REDIRECT_URL = 'login'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = str(BASE_DIR.joinpath('media'))
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
+
+

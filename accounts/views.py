@@ -19,15 +19,19 @@ class SignUpView(CreateView):
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            Profile.objects.create(user=user)
             return redirect('login')
         else:
             return render(request, self.template_name, {'form' : form })
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        Profile.objects.create(user=self.object)
+        return response
 
         
 class ProfilePageView(DetailView):
     model = Profile
     template_name = 'profile.html'
+    context_object_name = 'profile'
 
 class ProfileUpdateView(UpdateView):
     model = Profile
