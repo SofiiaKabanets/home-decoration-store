@@ -4,21 +4,13 @@ body html{
     background-image: url('/static/pattern.jpg'); /* Update the path accordingly */
     background-repeat: repeat; /* Repeat the pattern both horizontally and vertically */
 }
-
-.page-title{
-    color: white;
-    background-color: #2569fa;
-    height: 80px;
-    text-align: center;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    width: 68%;
-    margin: auto;
+.navigation{
+    display: inline-block;
+    vertical-align: middle;
+    width: 200px;
 }
 
-.page-description{
-font-size: 25px;
-}
-.container {
+.container{
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
@@ -26,6 +18,10 @@ font-size: 25px;
 
 .info-box{
     background-color: rgb(240,240,240);
+}
+
+.info-box p{
+    font-size: 135%;
 }
 
 /* Logo */
@@ -37,7 +33,7 @@ font-size: 25px;
     text-align: center;
     text-decoration: none;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color: #2569fa;
+    color: #225edf;
 }
 
 .logo h2 {
@@ -74,7 +70,7 @@ font-size: 25px;
 .nav-item {
     position: relative; 
     text-decoration: none;
-    margin-left: 10px;
+    margin-left: 30px;
     list-style: none;
 }
 
@@ -88,6 +84,9 @@ font-size: 25px;
     top: 100%; 
     right: 0; 
 }
+
+
+
 
 /* Secondary Nav Bar */
 .secondary-bar {

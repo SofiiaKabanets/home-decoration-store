@@ -1,9 +1,12 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-from .models import CustomUser
+from .models import CustomUser,Profile
+from django.contrib.auth import get_user_model
 
 from django.core.exceptions import ValidationError
 from datetime import date
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Layout, Submit
 
 
 class CustomUserCreationForm(UserCreationForm):
@@ -34,3 +37,18 @@ class CustomUserChangeForm(UserChangeForm):
     class Meta:
         model = CustomUser
         fields = ('username','email','dob','phone')
+
+
+class CustomProfileChangeForm(UserChangeForm):
+    class Meta:
+        model = Profile
+        fields = ('fname','lname','biography','picture')
+        labels = {
+            'fname': 'First Name',
+            'lname': 'Last Name',
+            'biography': 'Biography',
+            'picture': 'Profile Picture',
+        }
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields.pop('password', None) # Wasn't sure why password field was being included so just manually deleted it for each initialized form.

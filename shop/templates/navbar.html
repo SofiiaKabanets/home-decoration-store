@@ -1,35 +1,52 @@
 {% load static %}
-<div class="main-nav">
-    <div class="navbar">
-        <header>
-            <div class="logo">
-                <a href="{% url 'shop:all_products' %}">
-                    <h1>Home Haven</h1>
-                    <h2>Embrace your space.</h2>
-                </a>
-            </div>
-        </header>
-        <ul class="navbar">
-            {% if user.is_authenticated %}
-            <li class="nav-item">
-                Welcome, <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" 
-                aria-haspopup="true" aria-expanded="false">{{ user.username }} 
-                <ion-icon name="enter-outline"></ion-icon>
-                <div class="dropdown-menu dropdown-menu-right">
-                    <a href="{% url 'profile_view' user.profile.pk %}" class="dropdown-item">Profile</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a href="{% url 'logout' %}" class="nav-link">Sign Out <i class="fas fa-sign-out-alt"></i></a>
-            </li>
-            {% else %}
-            <li class="nav-item">
-                <a href="{% url 'signup' %}" class="nav-link">Sign Up <i class="fas fa-user-plus"></i></a>
-            </li>
-            <li class="nav-item">
-                <a href="{% url 'login' %}" class="nav-link">Sign In <i class="fas fa-sign-in-alt"></i></a>
-            </li>
-            {% endif %}
-        </ul>
-    </div>
-</div>
+<nav class="py-2 bg-body-tertiary border-bottom">
+  <div class="container d-flex flex-wrap">
+    <ul class="nav me-auto">
+      <li class="nav-item"><a href="{% url 'shop:all_products' %}" class="nav-link link-body-emphasis px-2 active"
+          aria-current="page">Home</a></li>
+      {% for cat in categories %}
+      <li class="nav-item"><a href="{{cat.get_absolute_url}}" class="nav-link link-body-emphasis px-2">{{cat.name}}</a>
+      </li>
+      {% endfor %}
+      <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">About</a></li>
+    </ul>
+    <ul class="nav">
+      <ul class="navbar">
+        {% if user and user.is_authenticated %}
+        <li class="nav-item">
+          Welcome, <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">{{ user.username }} </a>
+          <div class="dropdown-menu dropdown-menu-right">
+            <a href="{% url 'profile_view' user.profile.pk %}" class="dropdown-item">Profile</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'logout' %}" class="nav-link link-body-emphasis px-2">Sign Out <ion-icon
+              name="exit-outline"></ion-icon></a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a href="{% url 'signup' %}" class="nav-link link-body-emphasis px-2">Sign Up <ion-icon
+              name="person-outline"></ion-icon></a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'login' %}" class="nav-link link-body-emphasis px-2">Sign In <ion-icon
+              name="enter-outline"></ion-icon></a>
+        </li>
+        {% endif %}
+      </ul>
+    </ul>
+  </div>
+</nav>
+<header class="py-3 mb-4 border-bottom">
+  <div class="container d-flex flex-wrap justify-content-center">
+    <a href="/" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto link-body-emphasis text-decoration-none">
+      <img src="{% static 'images/logo2.png' %}" alt="Home Decoration Store" class="bi me-2" width="60" height="50">
+      <span class="fs-4">&nbsp&nbspHome Heaven &nbsp&nbsp- &nbsp Embrace your space</span>
+    </a>
+    <form class="col-12 col-lg-auto mb-3 mb-lg-0" role="search" method="POST" action="{% url 'search-view' %}">
+      {% csrf_token %}
+      <input class="form-control" type="search" placeholder="Search..." name="search_query" aria-label="Search">
+    </form>
+  </div>
+</header>

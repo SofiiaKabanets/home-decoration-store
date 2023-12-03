@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     # local
     'accounts',
     'shop',
+    'cart',
+    'search_app',
     # 3rd party
     'crispy_forms',
     'crispy_bootstrap5',
@@ -135,7 +137,7 @@ STATICFILES_FINDERS = [
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 AUTH_USER_MODEL = 'accounts.CustomUser'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = 'login'
@@ -143,3 +145,5 @@ LOGOUT_REDIRECT_URL = 'login'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = str(BASE_DIR.joinpath('media'))
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
+
+

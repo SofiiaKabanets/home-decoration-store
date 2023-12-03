@@ -27,6 +27,7 @@ See Our Variety of Options - Home Decoration Store
     <p class="page-description">{{category.description}}</p>
 </div>
 {% else %}
+<img class="my_image my_image_padding" src="{% static 'images/banner_p.jpg' %}" alt="Our Products Collection">
 <br>
 <div>
     <h1 class="text-center page-title">All Products</h1>
@@ -46,6 +47,7 @@ See Our Variety of Options - Home Decoration Store
                     <div class="card-body">
                         <h4>{{product.name}}</h4>
                         <p>€{{product.price}}</p>
+                        <button value="{{product.id}}">Add to Cart</button>
                     </div>
                 </div>
             </div>
