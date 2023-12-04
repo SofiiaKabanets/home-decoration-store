@@ -1,16 +1,19 @@
 {% extends "base.html" %}
 {% load static %}
+
 {% block metadescription %}
 {{ product.description|truncatewords:155 }}
 {% endblock %}
+
 {% block title %}
-{{ product.name }} - Perfect Cushion Store
+{{ product.name }} - Home Heaven
 {% endblock %}
+
 {% block content %}
-<div class="row my_prod_row_class">
+
+<div class="row">
     <div class="mx-auto">
-        <p><a href="{% url 'shop:all_products' %}">Home</a> | <a
-                href="{{product.category.get_url }}">{{product.category}}</a> | {{product.name}}</p>
+        <p class="mt-4"><a href="{% url 'shop:all_products' %}" style="color: black; text-decoration: none; margin-left: 70px;">Home</a> | <a href="{{product.category.get_absolute_url }}" style="color: black; text-decoration: none; ">{{product.category}}</a> | {{product.name}}</p>
     </div>
     <div class="container info-box p-3">
         <br>
@@ -22,14 +25,15 @@
             </div>
             <div class="col-12 col-sm-12 col-md-12 col-lg-6">
                 <div>
-                    <h1 class="my_prod_title">{{product.name}}</h1>
+                    <h1>{{product.name}}</h1>
                     <p>€{{product.price}}</p>
-                    <p class="fs-5">Product Description</p>
-                    <p class="page-description my_prod_text">{{product.description}}</p>
+                    <p class="my_title">Product Description</p>
+                    <p class="text-justify">{{product.description}}</p>
+                    <p>Tags: {% for tag in product.tags.all %}{{ tag.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
                     {% if product.stock == 0%}
-                        <p class="page-description my_prod_text"><b>Out of Stock</b></p>
+                        <p class="text-justify"><b>Out of Stock</b></p>
                     {% else %}
-                        <a class="btn btn-secondary" href="#">Add to Cart</a>
+                        <a class="btn btn-secondary" href="#">Add to Cart</a> 
                     {% endif %}
                 </div>
             </div>

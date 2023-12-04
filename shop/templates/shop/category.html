@@ -1,51 +1,56 @@
 {% extends "base.html" %}
 {% load static %}
+
 {% block metadescription %}
-{% if category %}
-{{ category.description|truncatewords:155 }}
-{% else %}
-Welcome to Home Have, where you can easily enhance & brighten the look of your home.
-{% endif %}
+    {% if category %}
+        {{ category.description|truncatewords:155 }}
+    {% else %}
+        Welcome to Home Have, where you can easily enhance & brighten the look of your home.
+    {% endif %}
 {% endblock %}
+
 {% block title %}
-{% if category %}
-{{ category.name }} - Home Decoration Store
-{% else %}
-See Our Variety of Options - Home Decoration Store
-{% endif %}
+    {% if category %}
+        {{ category.name }} - Home Decoration Store
+    {% else %}
+        See Our Variety of Options - Home Decoration Store
+    {% endif %}
 {% endblock %}
+
+
 {% block content %}
 
 {% if category %}
-<br>
-<div>
-    <h1 class="text-center page-title">{{category.name}}</h1>
-    <div class="mx-auto">
-        <img class="my_image" src="{{category.image.url}}" alt="{{category.name}}">
+    <div>
+        <p class="m-4"><a href="{% url 'shop:all_products' %}" style="color: black; text-decoration: none; margin-left: 40px;">Our Product Collection</a> | {{category.name}}</p>
     </div>
-    <br>
-    <p class="page-description">{{category.description}}</p>
-</div>
-{% else %}
-<br>
-<div>
-    <h1 class="text-center page-title">All Products</h1>
-    <p class="page-description">Home Haven is here to fit all your home decoration needs. We offer a variety of items for enhancing and styling your living space.</p>
-</div>
-<img class="my_banner" src="{% static 'images/banner.jpg' %}" alt="Our Products Collection">
+{% endif %}
 
+{% if category %}
+    <div>
+        <h1 class="text-center">{{category.name}}</h1>
+        <p class="text-center m-4 p-4">{{category.description}}</p>
+        <br>
+    </div>
+{% else %}
+<img style= "width: 100vw;"src="{% static 'images/banner_p.jpg' %}" alt="Our Products Collection">
+<br> <br> <br>
+<div>
+    <h1 class="text-center">Our Products Collection</h1>
+    <p class="text-center m-4">Home Haven is here to fit all your home decoration needs. We offer a variety of items for enhancing and styling your living space. Timeless elegance in perfect harmony: wood, nature and minimalism.We take pride in offering furniture and decor items that boast exceptional craftsmanship. Our commitment to quality ensures that every piece is not only visually stunning but also built to stand the test of time. Experience the luxury of well-made furnishings that enhance the beauty of your home.</p>
+</div>
 {% endif %}
 <div>
     <div class="container">
         <div class="row mx-auto">
             {% for product in prods %}
-            <div class="my_bottom_margin col-9 col-lg-4 col-sm-12 col-md-4">
-                <div class="card text-center" style="min-width:18rem;">
-                    <a class="img" href="{{product.get_absolute_url}}"><img class="card-img-top
-                         my_image" src="{{product.image.url}}" alt="{{product.name}}"></a>
+            <div class="col-9 col-lg-4 col-sm-12 col-md-4 mb-4">
+                <div class="card text-center h-100" style="min-width:18rem;">
+                    <a href="{{product.get_absolute_url}}"><img class="card-img-top" src="{{product.image.url}}" alt="{{product.name}}" style="height:500px; width:100% "></a>
                     <div class="card-body">
-                        <h4>{{product.name}}</h4>
+                        <p style="font-size: 18px;">{{product.name}}</p>
                         <p>€{{product.price}}</p>
+                        <button value="{{product.id}}" class="btn btn-outline-dark">Add to Cart</button>
                     </div>
                 </div>
             </div>
@@ -65,4 +70,4 @@ See Our Variety of Options - Home Decoration Store
         </div>
         <br>
     </div>
-    {% endblock %}
+{% endblock %}
