@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'shop',
     'cart',
     'search_app',
+    'order',
     # 3rd party
     'crispy_forms',
     'crispy_bootstrap5',
@@ -72,6 +73,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'shop.context_processors.menu_links',
+                'cart.context_processors.counter',
             ],
         },
     },
@@ -138,6 +140,7 @@ STATICFILES_FINDERS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 AUTH_USER_MODEL = 'accounts.CustomUser'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = 'login'
@@ -147,3 +150,5 @@ MEDIA_ROOT = str(BASE_DIR.joinpath('media'))
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
 
+STRIPE_SECRET_KEY = 'sk_test_51OEdgzCWqvxLLu4ebOp8yJsUBZs8rbiIQIdDLjZ50ePH4XBgCBzZEJXEoPHxBgsYdvcOh0BgBIftwScHIryOtbFr00N42iykl9'
+STRIPE_PUBLISHABLE_KEY = 'pk_test_51OEdgzCWqvxLLu4e8j3RiY5diPObnw6EPSnYUhcR5HJQzCKG08y7u3T0OxuXkoXScvNlpB8blejdElvxnFtQ66Yq00hthzu1Ub'

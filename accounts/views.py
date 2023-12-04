@@ -6,6 +6,7 @@ from django.contrib.auth.views import PasswordChangeView, LogoutView, PasswordRe
 
 from .forms import CustomUserCreationForm, CustomProfileChangeForm
 from .models import CustomUser, Profile
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import Profile
 from django.contrib.auth import get_user_model
@@ -28,12 +29,12 @@ class SignUpView(CreateView):
         return response
 
         
-class ProfilePageView(DetailView):
+class ProfilePageView(LoginRequiredMixin,DetailView):
     model = Profile
     template_name = 'profile.html'
     context_object_name = 'profile'
 
-class ProfileUpdateView(UpdateView):
+class ProfileUpdateView(LoginRequiredMixin,UpdateView):
     model = Profile
     form_class = CustomProfileChangeForm
     template_name = 'profile_edit.html'

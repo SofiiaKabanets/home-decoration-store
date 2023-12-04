@@ -47,7 +47,7 @@ See Our Variety of Options - Home Decoration Store
                     <div class="card-body">
                         <h4>{{product.name}}</h4>
                         <p>€{{product.price}}</p>
-                        <button value="{{product.id}}">Add to Cart</button>
+                        <a class="btn btn-secondary" href="{% url 'cart:cart_add' product.id %}">Add to Cart</a>  
                     </div>
                 </div>
             </div>

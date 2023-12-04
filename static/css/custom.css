@@ -1,8 +1,10 @@
 /* General */
+ion-icon {
+    vertical-align: middle;
+  }
+  
 body html{
     margin: 0;
-    background-image: url('/static/pattern.jpg'); /* Update the path accordingly */
-    background-repeat: repeat; /* Repeat the pattern both horizontally and vertically */
 }
 .navigation{
     display: inline-block;
@@ -24,6 +26,7 @@ body html{
     font-size: 135%;
 }
 
+
 /* Logo */
 .logo {
     position: relative; 
@@ -33,7 +36,6 @@ body html{
     text-align: center;
     text-decoration: none;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color: #225edf;
 }
 
 .logo h2 {
@@ -44,6 +46,7 @@ body html{
     
 }
 /* Navbar */
+
 .navbar {
     background-color: rgb(255, 255, 255);
     height: 60px;
@@ -72,6 +75,8 @@ body html{
     text-decoration: none;
     margin-left: 30px;
     list-style: none;
+    display: flex;
+    align-items: center;
 }
 
 .nav-item a {
@@ -79,48 +84,29 @@ body html{
     color: #2569fa;
 }
 
-.dropdown-menu {
-    position: absolute; 
-    top: 100%; 
-    right: 0; 
+
+
+.nav-item .dropdown-menu {
+    display: none;
+  }
+
+  .nav-item:hover .dropdown-menu {
+    display: block;
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    z-index: 1;
+  }
+
+.search_bar{
+    width: 500px;
 }
 
-
-
-
-/* Secondary Nav Bar */
-.secondary-bar {
-    background-color: darkgray;
-    height: 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-}
-
-.secondary-item {
-    text-decoration: none;
-    list-style: none; 
-    text-align: center;
-    display: flex;
-    height: 100%;
-    line-height: 60px;
-}
-
-
-.secondary-item li{
-    text-align: center;
-}
-.secondary-item a {
-    text-decoration: none;
-    color: rgb(255, 255, 255);
-    margin-right: 45px;
-}
-
-.secondary-item:hover {
-    color: white;
-    font-weight: bold;
-    background-color: #2569fa;
+.search_bar input{
+    width: 500px;
 }
 
 /* Login Page */
@@ -130,9 +116,8 @@ body html{
     margin: auto;
 }
 
-/* Categories Page */
-
-.my_banner{
-
+/* Profile Edit Page */
+.profile_edit_form textarea{
+    resize: none;
+    height: 30px;
 }
-

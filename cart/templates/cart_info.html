@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block title %}
-    Cart - Perfect Cushion Store
+    Cart - Home Haven
 {% endblock %}
 
 {% block content %}
@@ -48,23 +48,23 @@
                                     <td class="align-middle">€{{ cart_item.sub_total }}</td>
                                     {% if cart_item.quantity < cart_item.product.stock %}
                                         <td class="align-middle">
-                                            <a href="{% url 'cart:add_cart' cart_item.product.id %}">
-                                                <i class="fas fa-plus-circle"></i>
+                                            <a href="{% url 'cart:cart_add' cart_item.product.id %}">
+                                                <ion-icon name="add-circle-outline"></ion-icon>
                                             </a>
                                             <a href="{% url 'cart:cart_remove' cart_item.product.id %}">
-                                                <i class="fas fa-minus-circle"></i>
-                                            </a>
+                                                <ion-icon name="close-circle-outline"></ion-icon>
+                                                                                        </a>
                                             <a href="{% url 'cart:full_remove' cart_item.product.id %}">
-                                                <i class="fas fa-trash-alt"></i>
+                                                <ion-icon name="trash-bin-outline"></ion-icon>
                                             </a>
                                         </td>
                                     {% else %}
                                         <td class="align-middle">
                                             <a href="{% url 'cart:cart_remove' cart_item.product.id %}">
-                                                <i class="fas fa-minus-circle"></i>
+                                                <ion-icon name="close-circle-outline"></ion-icon>
                                             </a>
                                             <a href="{% url 'cart:full_remove' cart_item.product.id %}">
-                                                <i class="fas fa-trash-alt"></i>
+                                                <ion-icon name="trash-bin-outline"></ion-icon>
                                             </a>
                                         </td>
                                         <td></td>
@@ -85,39 +85,20 @@
                             <tr>
                                 <td>Please review your shopping cart items before proceeding with the order payment.</td>
                             </tr>
-                            {% if voucher %}
-                                <tr class="subtotal">
-                                    <td>Total: €{{ total|floatformat:"2" }}</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        "{{ voucher.code }}" voucher ({{ voucher.discount }}% off): - €{{ discount|floatformat:"2" }}
-                                    </td>
-                                </tr>
-                                <tr class="total">
-                                    <td>Total: €{{ new_total|floatformat:"2" }}</td>
-                                </tr>
-                            {% else %}
-                                <tr class="total">
-                                    <td>Total: €{{ total|floatformat:"2" }}</td>
-                                </tr>
-                            {% endif %}
+                            <tr class="total">
+                                <td>Total: €{{ total|floatformat:"2" }}</td>
+                            </tr>
                         </tbody>
                     </table>
-                    <p>Apply a voucher:</p>
-                    <form action="{% url 'vouchers:apply' %}" method="post">
-                        {{ voucher_apply_form }}
-                        <input type="submit" class="btn btn-secondary" value="Apply">
-                        {% csrf_token %}
-                    </form>
+
                     <form action="" method="POST">
                         {% csrf_token %}
                         <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                             data-key="{{ data_key }}"
                             data-amount="{{ stripe_total }}"
-                            data-name="Perfect Cushion Shop"
+                            data-name="Home Haven"
                             data-description="{{ description }}"
-                            data-image="{% static 'images/logo.png' %}"
+                            data-image="{% static 'images/logo2.png' %}"
                             data-locale="auto"
                             data-currency="eur"
                             data-shipping-address="true"
