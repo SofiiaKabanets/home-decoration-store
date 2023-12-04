@@ -20,15 +20,21 @@ class CustomUser(AbstractUser):
 
 
 class Profile(models.Model):
+
     user = models.OneToOneField(
         get_user_model(),
         null=True,
         on_delete=models.CASCADE,
     )
-    fname = models.TextField(max_length=10,blank = True)
-    lname = models.TextField(max_length=10,blank = True)
-    biography = models.TextField(max_length=30,blank = True)
-    picture = models.ImageField(upload_to='profile', blank=True)
+    fname = models.TextField(max_length=10,blank = True,
+                             verbose_name = 'First Name')
+    lname = models.TextField(max_length=10,blank = True,
+                             verbose_name = 'First Name')
+    biography = models.TextField(max_length=30,blank = True,
+                            verbose_name = 'Biography')
+    picture = models.ImageField(upload_to='profile', blank=True,
+                                    verbose_name = 'Profile Picture')
+    
     def __str__(self):
         return str(self.user)
     

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+Order Placed - Home Haven
+{% endblock %}
+{% block content %}
+<div>
+    <div class="info-box text-center">
+        <img src="{% static 'images/checkmark.png' %}" alt="Checkmark Icon" class="checkmark-icon p-3" style="width: 130px; height: 130px;">
+        <br>
+        <br>
+        <h1 class="text-center">
+            Order Placed Successfully
+        </h1>
+        <br>
+        <h3 class="text-center">
+            Thank you, {{ user.username }}, for choosing Home Haven!
+        </h3>
+        <br>
+        <p>Your order number is: <b>{{ customer_order.id }}</b></p>
+        <p>We have sent a confirmation email to you with your online receipt and tracking details.</p>
+        <br>
+        <p>Want to explore more? Check out our latest products.</p>
+        <a href="/" class="btn btn-primary">Continue Shopping</a>
+    </div>
+</div>
+<br>
+<br>
+{% endblock %}

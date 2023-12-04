@@ -6,6 +6,8 @@ class Cart(models.Model):
     date_added = models.DateField(auto_now_add=True)
     
     class Meta:
+        verbose_name = 'Cart'
+        verbose_name_plural = 'Carts'
         db_table = 'Cart'
         ordering = ['date_added']
         
