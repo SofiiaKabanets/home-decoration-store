@@ -5,23 +5,36 @@ Search - All Your Home Decoration Needs
 {% endblock %}
 {% block content %}
         {% if products %}
-            {% for product in products %}
-            <div class="m-4 col-9 col-sm-12 col-md-4 col-md-12 col-lg-4">  
-                <div class="card text-center" style="min-width: 18rem;">
-                    <a href="{{product.get_absolute_url}}"><img class="card-img-top " src="{{product.image.url}}" alt="{{product.name}}"></a> 
-                        <div class="card-body">
-                            <h4>{{product.name}}</h4>
-                            <p>€{{product.price}}</p>
-                            <p style="font-size: 11px;">{{product.description}}</p>
-                            <a href="{{product.get_absolute_url}}"><button value="{{product.id}}" class="btn btn-secondary">View</button></a>
+        <div class="container mt-4">
+            <p>Results for: <strong>{{ query }}</strong></p>
+        
+            <div class="row">
+                {% for product in products %}
+                    <div class="col-12 col-sm-6 col-md-4 mb-4">  
+                        <div class="card text-center" style="min-width: 18rem;">
+                            <a href="{{ product.get_absolute_url }}"><img class="card-img-top" src="{{ product.image.url }}" alt="{{ product.name }}"></a> 
+                            <div class="card-body">
+                                <h4>{{ product.name }}</h4>
+                                <p>€{{ product.price }}</p>
+                                <p style="font-size: 11px;">{{ product.description|truncatechars:100  }}</p>
+                                <a href="{{ product.get_absolute_url }}"><button value="{{ product.id }}" class="btn btn-secondary">View</button></a>
+                            </div>
                         </div>
-                </div>
-            </div>  
-        {% empty %}
-        <div class="row mx-auto">
-            <p class="text-center ">0 results found.</p>
+                    </div>  
+        
+                    {% if forloop.counter|divisibleby:3 and not forloop.last %}
+                        </div><div class="row">
+                    {% endif %}
+        
+                {% empty %}
+                    <div class="row mx-auto">
+                        <p class="text-center">0 results found for: <strong>{{ search_query }}</strong>.</p>
+                    </div>
+                {% endfor %}
             </div>
-            {% endfor %}
+        </div>
+        
+        
         {% else %}
             <h3>No search results found</h3>
         {% endif %}
