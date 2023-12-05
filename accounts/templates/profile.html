@@ -22,9 +22,12 @@ Profile Page - Home Decoration Store
                     <img src="{% if profile.user.profile.picture %}{{ profile.user.profile.picture.url }}{% else %}{% static 'images/profile-default.jpg' %}{% endif %}" alt="Profile Picture" class="rounded-circle mr-3" width="100" height="100">
 
                     <p>Username: {{ profile.user.username }}</p>
+                    {% if profile.user.user_type %}
+                    <p>Account type: {{ profile.user.get_user_type_display  }}</p>
+                    {%endif%}
                     <p>Member since: {{ profile.user.signup_date }}</p>
                     <p>Biography: {{ profile.biography }}</p>
-                    
+
                 </div>
                 {% if request.user == profile.user %}
                 <div class="container-fluid info-box">

@@ -29,6 +29,7 @@ class CustomUser(AbstractUser):
         super().save(*args, **kwargs)
         if is_new_user:
             Profile.objects.create(user=self)
+            print(self.is_staff)
             if self.is_staff:
                 self.user_type = 'manager'
                 self.save()
