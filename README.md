@@ -13,6 +13,9 @@ Assignment Credits
 
 Aaron: Accounts app, Cart app, Orders app, some CSS styling, merging data
 
-Sofia:
+Sofia: Shop app, Search app, Vouchers app, Website layout and styling.
 
 Hugo: Reviews app
+
+PythonAnyWhere
+http://sofiia0808.pythonanywhere.com
