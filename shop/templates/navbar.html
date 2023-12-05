@@ -17,7 +17,10 @@
             <div class="dropdown-menu">
               <a href="{% url 'profile_view' user.profile.pk %}" class="dropdown-item">Profile</a>
               <a href="{% url 'order:order_history' %}" class="dropdown-item">Order History</a>
+              {% if user.user_type == 'manager' %}
+              <a href="{% url 'admin:index' %}" class="dropdown-item">Admin</a>
 
+              {% endif %}
             </div>
           </div>
         </li>
