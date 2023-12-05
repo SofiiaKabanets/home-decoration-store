@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'search_app',
     'order',
     'vouchers',
+    'reviews',
     # 3rd party
     'crispy_forms',
     'crispy_bootstrap5',

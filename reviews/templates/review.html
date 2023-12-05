@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block metadescription %}
+    This the reviews page. If you enjoyed an item, we welcome you to leave a review to help others with their purchases.
+{% endblock %}
+
+{% block title %}
+    Reviews
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="text-center">
+            <h2><a href = "{% url 'review_new' %}">Write a review</a></h2>
+        </div>
+
+        <br>
+        
+        {% for post in all_post_list %}
+            <div class = "post-entry">
+                <h2><a href = "{% url 'review_detail' post.pk %}">{{post.title}}</a></h2>
+                <p>{{post.body}}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
