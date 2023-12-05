@@ -16,6 +16,8 @@
             </a>
             <div class="dropdown-menu">
               <a href="{% url 'profile_view' user.profile.pk %}" class="dropdown-item">Profile</a>
+              <a href="{% url 'order:order_history' %}" class="dropdown-item">Order History</a>
+
             </div>
           </div>
         </li>

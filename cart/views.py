@@ -4,6 +4,7 @@ from shop.models import Product
 from django.core.exceptions import ObjectDoesNotExist
 from django.conf import settings
 from order.models import Order, OrderItem
+from django.views.decorators.http import require_POST
 import stripe
 
 
@@ -14,19 +15,20 @@ def _cart_id(request):
     return cart
 
 
+@require_POST
 def cart_add(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     cart_id = _cart_id(request)
-
     cart, created = Cart.objects.get_or_create(cart_id=cart_id)
 
+    quantity = int(request.POST.get('quantity', 1))
     try:
         cart_item = CartItem.objects.get(product=product, cart=cart)
-        if cart_item.quantity < cart_item.product.stock:
-            cart_item.quantity += 1
+        if cart_item.quantity + quantity <= cart_item.product.stock:
+            cart_item.quantity += quantity
             cart_item.save()
     except CartItem.DoesNotExist:
-        CartItem.objects.create(product=product, quantity=1, cart=cart)
+        CartItem.objects.create(product=product, quantity=quantity, cart=cart)
 
     return redirect("cart:cart_detail")
 

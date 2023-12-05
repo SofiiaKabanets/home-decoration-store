@@ -4,7 +4,7 @@ from .models import CustomUser,Profile
 from django.contrib.auth import get_user_model
 
 from django.core.exceptions import ValidationError
-from datetime import date
+from datetime import date, timedelta
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Submit
 
@@ -22,8 +22,10 @@ class CustomUserCreationForm(UserCreationForm):
     def clean_dob(self):
         dob = self.cleaned_data['dob']
         today = date.today()
-        if dob > today:
-            raise ValidationError('Must enter a valid date of birth.',code='invalid')
+        min_age_limit = today - timedelta(days=365 * 100)  # 100 years ago
+
+        if dob > today or dob < min_age_limit:
+            raise ValidationError('Must enter a valid date of birth.', code='invalid')
         
         return dob
     def clean_phone(self):

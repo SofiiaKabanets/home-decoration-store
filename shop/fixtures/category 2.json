@@ -1,0 +1,20 @@
+[
+  {
+    "model": "shop.category",
+    "pk": "fb31fcf818f74310aab285ac38cf25bb",
+    "fields": {
+      "name": "Furniture",
+      "description": "Discover our wide range of stylish and functional furniture. From comfortable sofas to elegant tables, we have all you need to transform your living space.",
+      "image": "category/furniture_IW46nAt.jpg"
+    }
+  },
+  {
+    "model": "shop.category",
+    "pk": "2f8316e0011f45f2aabccea90233eed4",
+    "fields": {
+      "name": "Decor",
+      "description": "Make your house a home with our vibrant and on-trend range of home decorations.",
+      "image": "category/banner.jpg"
+    }
+  }
+]

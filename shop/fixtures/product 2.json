@@ -1,0 +1,86 @@
+[
+  {
+    "model": "shop.product",
+    "pk": "52ce804f56844f38b8e2f57251b3847b",
+    "fields": {
+      "name": "Printed cotton cushion cover",
+      "description": "Cushion cover in a cotton weave with a print motif and a zip along one side.",
+      "category": "2f8316e0011f45f2aabccea90233eed4",
+      "price": 5,
+      "image": "product/hmgoepprod-5.jpeg",
+      "stock": 10
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": "12b79a1c9eeb4a899cbcd4c8d6cbccad",
+    "fields": {
+      "name": "Scented candle in glass holder",
+      "description": "Scented candle in a patterned glass holder. Diameter 8 cm, height 11 cm. Burn time 60 hours.",
+      "category": "2f8316e0011f45f2aabccea90233eed4",
+      "price": 15,
+      "image": "product/hmgoepprod-3.jpeg",
+      "stock": 10
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": "eb9c63c8cf2749978bea2c18e09ae776",
+    "fields": {
+      "name": "3-pack mini stoneware vases",
+      "description": "Set of small, glazed stoneware vases in various shapes. Supplied in a cardboard box. Height 10 cm.",
+      "category": "2f8316e0011f45f2aabccea90233eed4",
+      "price": 16,
+      "image": "product/hmgoepprod-2.jpeg",
+      "stock": 10
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": "8ad44eb665cf4cc2b8a048425ba06729",
+    "fields": {
+      "name": "Wooden frame",
+      "description": "Wooden frame with plastic glazing. MDF back with metal hangers. Screws not included.",
+      "category": "2f8316e0011f45f2aabccea90233eed4",
+      "price": 12,
+      "image": "product/hmgoepprod-4.jpeg",
+      "stock": 10
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": "67d673496bb44b318dc84eb6b763a8f5",
+    "fields": {
+      "name": "Metal side table",
+      "description": "Sculptural side table in lightweight metal that has been treated to create a rustic, cast-iron look. Diameter of table top 28.4 cm. Height 55 cm. Supplied flat-packed, ready to assemble.",
+      "category": "fb31fcf818f74310aab285ac38cf25bb",
+      "price": 120,
+      "image": "product/hmgoepprod-6.jpeg",
+      "stock": 10
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": "2361bbba655447e0831263b7a6e0115b",
+    "fields": {
+      "name": "Children's rattan lounge chair",
+      "description": "Comfortable rattan lounge chair for children that adds a playful and decorative detail to any room. Perfect for reading, drawing or resting between adventures. Supplied fully assembled. Depth 39 cm. Seat height 27 cm. Width 43 cm. Total height 48 cm.",
+      "category": "fb31fcf818f74310aab285ac38cf25bb",
+      "price": 35,
+      "image": "product/hmgoepprod-7.jpeg",
+      "stock": 10
+    }
+  },
+  {
+    "model": "shop.product",
+    "pk": "b6afde1abb674d59b25015f73f37926a",
+    "fields": {
+      "name": "Jalousie-door cabinet",
+      "description": "Cabinet in MDF with lacquered ash veneer, rounded corners and jalousie doors in pine. Adjustable shelf and painted metal legs. Easy to assemble, screws included. Depth 36 cm. Width 80 cm. Height 77 cm. Weight 16 kg.",
+      "category": "fb31fcf818f74310aab285ac38cf25bb",
+      "price": 250,
+      "image": "product/hmgoepprod-8.jpeg",
+      "stock": 10
+    }
+  }
+]

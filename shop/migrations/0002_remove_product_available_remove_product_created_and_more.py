@@ -10,20 +10,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='product',
-            name='available',
-        ),
-        migrations.RemoveField(
-            model_name='product',
-            name='created',
-        ),
-        migrations.RemoveField(
-            model_name='product',
-            name='stock',
-        ),
-        migrations.RemoveField(
-            model_name='product',
-            name='updated',
-        ),
+
     ]
