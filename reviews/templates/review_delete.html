@@ -1,0 +1,14 @@
+{% extends base.html %}
+
+{% block title %}
+    Delete Review
+{% endblock title %}
+
+{% block content %}
+    <h2>Delete Review</h2>
+        <form action = "" method = "POST">
+            {% csrf_token %}
+            <p>Are you sure you want to delete "{{ post.title }}"?</p>
+            <input type = "submit" value = "Confirm"/>
+        </form>
+{% endblock content %}
