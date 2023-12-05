@@ -20,11 +20,10 @@
               Welcome, {{ user.username }} <ion-icon name="caret-down-outline"></ion-icon>
             </a>
             <div class="dropdown-menu">
-              <a href="{% url 'profile_view' user.profile.pk %}" class="dropdown-item">Profile</a>
-              <a href="{% url 'order:order_history' %}" class="dropdown-item">Order History</a>
+              <a href="{% url 'profile_view' user.profile.pk %}" class="dropdown-item" style="color:black;">Profile</a>
+              <a href="{% url 'order:order_history' %}" class="dropdown-item" style="color:black;">Order History</a>
               {% if user.user_type == 'manager' %}
-              <a href="{% url 'admin:index' %}" class="dropdown-item">Admin</a>
-
+              <a href="{% url 'admin:index' %}" class="dropdown-item" style="color:black;">Admin</a>
               {% endif %}
             </div>
           </div>
@@ -44,32 +43,24 @@
         </li>
         {% endif %}
       </ul>
-    </ul>
+    </div>
+  </nav>
+  <header class="py-3 mb-4 border-bottom">
+    <div class="container d-flex flex-wrap justify-content-center">
+      <a href="/" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto link-body-emphasis text-decoration-none">
+        <img src="{% static 'images/logo2.png' %}" alt="Home Decoration Store" class="bi me-2" width="60" height="50">
+        <span class="fs-4">&nbsp&nbspHome Heaven &nbsp&nbsp- &nbsp Embrace your space</span>
+      </a>
+      <form class="col-12 col-lg-auto mb-3 mb-lg-0" role="search" method="POST" action="{% url 'search-view' %}">
+        {% csrf_token %}
+        <input
+            class="form-control"
+            type="search"
+            placeholder="Search..."
+            name="search_query"
+            aria-label="Search"
+        >
+     </form>
+    </div>
+  </header>
 
-  </div>
-</header>
-<nav class="py-2 bg-body-tertiary border-bottom">
-  <div class="container d-flex flex-wrap">
-    <ul class="nav me-auto">
-      <li class="nav-item"><a href="{% url 'shop:all_products' %}" class="nav-link link-body-emphasis px-2 active"
-          aria-current="page">Home</a></li>
-      {% for cat in categories %}
-      <li class="nav-item"><a href="{{cat.get_absolute_url}}" class="nav-link link-body-emphasis px-2">{{cat.name}}</a>
-      </li>
-      {% endfor %}
-      <li class="nav-item"><a href="#" class="nav-link link-body-emphasis px-2">About</a></li>
-      <li class="nav-item text-center">
-        <a class="nav-link link-body-emphasis px-2" href="{% url 'cart:cart_detail' %}">Your Cart<ion-icon
-            name="cart-outline"></ion-icon>({{ item_count|default:"0" }})</a>
-      </li>
-    </ul>
-    <ul class="nav">
-      <ul class="navbar search_bar">
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0" role="search" method="POST" action="{% url 'search-view' %}">
-          {% csrf_token %}
-          <input class="form-control" type="search" placeholder="Search..." name="search_query" aria-label="Search">
-        </form>
-      </ul>
-    </ul>
-  </div>
-</nav>
