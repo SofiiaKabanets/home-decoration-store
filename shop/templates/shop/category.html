@@ -50,7 +50,7 @@
                     <div class="card-body">
                         <p style="font-size: 18px;">{{product.name}}</p>
                         <p>€{{product.price}}</p>
-                        <button value="{{product.id}}" class="btn btn-outline-dark">Add to Cart</button>
+                        <a href="{{product.get_absolute_url}}"><button type="submit" class="btn btn-secondary">View</button></a>
                     </div>
                 </div>
             </div>

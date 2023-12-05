@@ -6,20 +6,20 @@ Search - All Your Home Decoration Needs
 {% block content %}
         {% if products %}
             {% for product in products %}
-            <div class="my_bottom_margin col-9 col-sm-12 col-md-4 col-md-12 col-lg-4">  
+            <div class="m-4 col-9 col-sm-12 col-md-4 col-md-12 col-lg-4">  
                 <div class="card text-center" style="min-width: 18rem;">
-                    <a href="{{product.get_absolute_url}}"><img class="card-img-top my_image" src="{{product.image.url}}" alt="{{product.name}}"></a> 
+                    <a href="{{product.get_absolute_url}}"><img class="card-img-top " src="{{product.image.url}}" alt="{{product.name}}"></a> 
                         <div class="card-body">
                             <h4>{{product.name}}</h4>
                             <p>€{{product.price}}</p>
                             <p style="font-size: 11px;">{{product.description}}</p>
-                            <button value="{{product.id}}">Add to Cart</button>
+                            <a href="{{product.get_absolute_url}}"><button value="{{product.id}}" class="btn btn-secondary">View</button></a>
                         </div>
                 </div>
-            </div> 
+            </div>  
         {% empty %}
         <div class="row mx-auto">
-            <p class="text-center my_search_text">0 results found.</p>
+            <p class="text-center ">0 results found.</p>
             </div>
             {% endfor %}
         {% else %}

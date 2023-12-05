@@ -7,10 +7,9 @@
 {{ product.name }} - Home Haven
 {% endblock %}
 {% block content %}
-<div class="row my_prod_row_class">
+<div class="row">
     <div class="mx-auto">
-        <p><a href="{% url 'shop:all_products' %}">Home</a> | <a
-                href="{{product.category.get_url }}">{{product.category}}</a> | {{product.name}}</p>
+        <p class="m-4"><a href="{% url 'shop:all_products' %}" style="color: black; text-decoration: none; margin-left: 40px;">Home</a> | <a href="{{product.category.get_absolute_url }}" style="color: black; text-decoration: none;">{{product.category}}</a> | {{product.name}}</p>
     </div>
     <div class="container info-box p-3">
         <br>
@@ -22,19 +21,19 @@
             </div>
             <div class="col-12 col-sm-12 col-md-12 col-lg-6">
                 <div>
-                    <h1 class="my_prod_title">{{product.name}}</h1>
+                    <h1 >{{product.name}}</h1>
                     <p>€{{product.price}}</p>
                     <form method="post" action="{% url 'cart:cart_add' product.id %}">
                         {% csrf_token %}
                             <p class="fs-5">Product Description</p>
-                            <p class="page-description my_prod_text">{{product.description}}</p>
+                            <p class="page-description">{{product.description}}</p>
                         {% if product.stock == 0 %}
-                            <p class="text-justify my_prod_text"><b>Out of Stock</b></p>
+                            <p class="text-justify"><b>Out of Stock</b></p>
                         {% else %}
                             {% if product.stock > 3 %}
-                                <p class="text-justify my_prod_text text-success"><b>In stock</b></p>
+                                <p class="text-justify text-success"><b>In stock</b></p>
                             {% else %}
-                                <p class="text-justify my_prod_text text-danger"><b>Low in stock</b></p>
+                                <p class="text-justify text-danger"><b>Low in stock</b></p>
                             {% endif %}
                             <label for="quantity">Quantity:</label>
                             <input type="number" id="quantity" name="quantity" min="1" max="{{product.stock}}" value="1">
@@ -42,6 +41,7 @@
                             <br>
                             <button type="submit" class="btn btn-secondary">Add to Cart</button>
                         {% endif %}
+                        <br><br>
                         <p>Tags: {% for tag in product.tags.all %}
                             {{ tag.name }}
                             {% endfor %}

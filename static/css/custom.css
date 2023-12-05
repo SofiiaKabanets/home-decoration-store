@@ -48,7 +48,6 @@ body html{
 /* Navbar */
 
 .navbar {
-    background-color: rgb(255, 255, 255);
     height: 60px;
     display: flex;
     justify-content: space-between;

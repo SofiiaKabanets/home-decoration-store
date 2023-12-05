@@ -6,14 +6,6 @@
       <li class="nav-item"><a href="{{cat.get_absolute_url}}" class="nav-link px-2 text-muted">{{cat.name}}</a></li>
       {% endfor %}
     </ul>
-    {% comment %} {% if user.is_authenticated %}
-    <p class="text-center text-muted">Embrace your space.</span>
-      {% else %}
-    <p class="text-center text-muted"><b>Register to get 10% off!</b></span>
-      <a href="{% url 'signup' %}"><button data-mdb-ripple-init type="button" class="btn btn-outline-light btn-rounded">
-          Register
-        </button></a>
-      {% endif %} {% endcomment %}
     <p class="text-center text-muted">© Home Haven. All Rights Reserved.</p>
   </footer>
 </div>

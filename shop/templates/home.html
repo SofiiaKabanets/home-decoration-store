@@ -118,20 +118,20 @@
     Our obsession? To perfect every detail. That's why for all our products, we carefully and personally follow each step of our design, manufacturing, and distribution process. Doing this assures excellent and functional designs that are high-quality and long-lasting, at an affordable price.</p>
     <br><br><br>
 
-<div class="wrapper">
-    <div class="main">
-        <div class="grid-container">
-            {% for category in categories %}
-                <div class="grid-item {% cycle 'flex-end' 'flex-start' %}">
-                    <div class="image_container">
-                    <a href="{% url 'shop:products_by_category' category.id %}">
-                    <img src="{{ category.image.url }}" alt="{{ category.name }}">
-                    <div class="centered">{{ category.name }}</div></a>
-                </div>
-                </div>
-            {% endfor %}
+    <div class="wrapper">
+        <div class="main">
+            <div class="grid-container">
+                {% for category in categories %}
+                    <div class="grid-item {% cycle 'flex-end' 'flex-start' %}">
+                        <div class="image_container">
+                        <a href="{% url 'shop:products_by_category' category.id %}">
+                        <img src="{{ category.image.url }}" alt="{{ category.name }}">
+                        <div class="centered">{{ category.name }}</div></a>
+                    </div>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
-</div>
-<br><br>
-{% endblock %}
+    <br><br>
+    {% endblock %}
