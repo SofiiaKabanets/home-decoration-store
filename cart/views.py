@@ -18,13 +18,14 @@ def _cart_id(request):
     return cart
 
 
-@require_POST
 def cart_add(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     cart_id = _cart_id(request)
     cart, created = Cart.objects.get_or_create(cart_id=cart_id)
 
     quantity = int(request.POST.get('quantity', 1))
+    if not render:
+        quantity = 1
     try:
         cart_item = CartItem.objects.get(product=product, cart=cart)
         if cart_item.quantity + quantity <= cart_item.product.stock:
@@ -37,9 +38,17 @@ def cart_add(request, product_id):
 
 
 def cart_remove(request, product_id):
-    cart = Cart(request)
+    cart = Cart.objects.get(cart_id=_cart_id(request))
     product = get_object_or_404(Product, id=product_id)
-    cart.remove(product)
+    try:
+        cart_item = CartItem.objects.get(product=product, cart=cart)
+        if cart_item.quantity > 1:
+            cart_item.quantity -= 1
+            cart_item.save()
+        else:
+            cart_item.delete()
+    except CartItem.DoesNotExist:
+        pass
     return redirect("cart:cart_detail")
 
 
